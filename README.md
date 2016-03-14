@@ -8,7 +8,10 @@ Das Modul enthält:
 - eine Limitierte Box welche die letzten 3 Meinungen anzeigt (Anzahl im Backend einstellbar)
 - eine Slider Content Box welche die Meinungen Automatisch slidet bzw. durch Rechts und Links klicken wechselt (Geschwindigkeit im Backend einstallbar)
 
-![ScreenShot](https://raw.github.com/kveldscholten/Meinungsmodul/master/opinions.jpg)
+![ScreenShot](https://raw.github.com/kveldscholten/Meinungsmodul/master/sliderBox.jpg)
+![ScreenShot](https://raw.github.com/kveldscholten/Meinungsmodul/master/randomBox.jpg)
+![ScreenShot](https://raw.github.com/kveldscholten/Meinungsmodul/master/standardBox.jpg)
+![ScreenShot](https://raw.github.com/kveldscholten/Meinungsmodul/master/opinionsContent.jpg)
 
 ## Entwickelt
 Veldscholten, Kevin
