@@ -37,7 +37,7 @@ class Config extends \Ilch\Config\Install
 
     public function uninstall()
     {
-        $this->db()->queryMulti('DROP TABLE `[prefix]_opinions`');
+        $this->db()->queryMulti("DROP TABLE `[prefix]_opinions`");
         $this->db()->queryMulti("DELETE FROM `[prefix]_config` WHERE `key` = 'opinions_box_count'");
         $this->db()->queryMulti("DELETE FROM `[prefix]_config` WHERE `key` = 'opinions_slider_interval'");
     }

@@ -22,8 +22,10 @@
                 </thead>
                 <tbody>
                     <?php foreach ($this->get('opinions') as $opinion): ?>
-                        <?php $userMapper = new \Modules\User\Mappers\User(); ?>
-                        <?php $user = $userMapper->getUserById($opinion->getUserId()); ?>
+                        <?php
+                        $userMapper = new \Modules\User\Mappers\User();
+                        $user = $userMapper->getUserById($opinion->getUserId());
+                        ?>
                         <tr>
                             <td><input value="<?=$opinion->getId() ?>" type="checkbox" name="check_entries[]" /></td>
                             <td><?=$this->getDeleteIcon(array('action' => 'del', 'id' => $opinion->getId())) ?></td>

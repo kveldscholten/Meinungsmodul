@@ -5,9 +5,11 @@
     <div class='row'>
         <div class='col-sm-12'>
             <?php foreach ($this->get('opinion') as $opinion): ?>
-                <?php $userMapper = new \Modules\User\Mappers\User(); ?>
-                <?php $user = $userMapper->getUserById($opinion->getUserId()); ?>
-                <?php $date = new \Ilch\Date($opinion->getDate()); ?>
+                <?php
+                $userMapper = new \Modules\User\Mappers\User();
+                $user = $userMapper->getUserById($opinion->getUserId());
+                $date = new \Ilch\Date($opinion->getDate());
+                ?>
                 <div class="item opinions box">
                     <blockquote>
                         <div class="row">

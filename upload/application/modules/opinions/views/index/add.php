@@ -1,4 +1,4 @@
-<?php if($this->getUser()): ?>
+<?php if ($this->getUser()): ?>
     <div class='row'>
         <div class='col-lg-12'>
             <form class="form-horizontal" method="POST" action="">

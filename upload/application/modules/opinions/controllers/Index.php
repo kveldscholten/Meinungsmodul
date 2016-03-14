@@ -39,6 +39,9 @@ class Index extends \Ilch\Controller\Frontend
             }
         }
 
+        $progressBarColor = array('1' => 'danger', '2' => 'warning', '3' => 'info', '4' => 'primary', '5' => 'success');
+
+        $this->getView()->set('opinionsProgressBarColor', $progressBarColor);
         $this->getView()->set('opinionsRating', round($opinionsMapper->getSumRating() / count($opinionsMapper->getOpinions()), 2));
         $this->getView()->set('opinionsCount', count($opinionsMapper->getOpinions()));
 

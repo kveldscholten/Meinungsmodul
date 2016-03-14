@@ -8,9 +8,11 @@
             <div class="carousel slide" data-ride="carousel" id="opinions-carousel">
                 <div class="carousel-inner">
                     <?php foreach ($this->get('opinions') as $key => $opinion): ?>
-                        <?php $userMapper = new \Modules\User\Mappers\User(); ?>
-                        <?php $user = $userMapper->getUserById($opinion->getUserId()); ?>
-                        <?php $date = new \Ilch\Date($opinion->getDate()); ?>
+                        <?php
+                        $userMapper = new \Modules\User\Mappers\User();
+                        $user = $userMapper->getUserById($opinion->getUserId());
+                        $date = new \Ilch\Date($opinion->getDate());
+                        ?>
                         <div class="item opinions <?php if ($key == 0) { echo 'active'; }; ?>">
                             <blockquote>
                                 <div class="row">

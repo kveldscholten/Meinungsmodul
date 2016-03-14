@@ -18,65 +18,19 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 opinions">
         <h4><?=$this->getTrans('ratingBreakdown') ?></h4>
-        <div class="pull-left">
-            <div class="pull-left" style="width: 35px; line-height: 1;">
-                <div style="height: 9px; margin: 5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-            </div>
-            <div class="pull-left" style="width: 180px;">
-                <div class="progress" style="height: 9px; margin: 8px 0;">
-                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=$this->get('opinionsStarRatingWidth5') ?>%"></div>
+        <?php for ($i = 5; $i >= 1; $i--): ?>
+            <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1;">
+                    <div style="height: 9px; margin: 5px 0;"><?=$i ?> <span class="glyphicon glyphicon-star"></span></div>
                 </div>
-            </div>
-            <div class="pull-right" style="margin-left:10px;"><?=$this->get('opinionsStarRating5') ?></div>
-        </div>
-
-        <div class="pull-left">
-            <div class="pull-left" style="width: 35px; line-height: 1;">
-                <div style="height: 9px; margin: 5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
-            </div>
-            <div class="pull-left" style="width: 180px;">
-                <div class="progress" style="height: 9px; margin: 8px 0;">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" style="width: <?=$this->get('opinionsStarRatingWidth4') ?>%"></div>
+                <div class="pull-left" style="width: 180px;">
+                    <div class="progress" style="height: 9px; margin: 8px 0;">
+                        <div class="progress-bar progress-bar-<?=$this->get('opinionsProgressBarColor')[$i] ?>" role="progressbar" style="width: <?=$this->get('opinionsStarRatingWidth'.$i) ?>%"></div>
+                    </div>
                 </div>
+                <div class="pull-right" style="margin-left:10px;"><?=$this->get('opinionsStarRating'.$i) ?></div>
             </div>
-            <div class="pull-right" style="margin-left:10px;"><?=$this->get('opinionsStarRating4') ?></div>
-        </div>
-
-        <div class="pull-left">
-            <div class="pull-left" style="width: 35px; line-height: 1;">
-                <div style="height: 9px; margin: 5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-            </div>
-            <div class="pull-left" style="width: 180px;">
-                <div class="progress" style="height: 9px; margin: 8px 0;">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: <?=$this->get('opinionsStarRatingWidth3') ?>%"></div>
-                </div>
-            </div>
-            <div class="pull-right" style="margin-left:10px;"><?=$this->get('opinionsStarRating3') ?></div>
-        </div>
-
-        <div class="pull-left">
-            <div class="pull-left" style="width: 35px; line-height: 1;">
-                <div style="height: 9px; margin: 5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-            </div>
-            <div class="pull-left" style="width: 180px;">
-                <div class="progress" style="height: 9px; margin: 8px 0;">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" tyle="width: <?=$this->get('opinionsStarRatingWidth2') ?>%"></div>
-                </div>
-            </div>
-            <div class="pull-right" style="margin-left: 10px;"><?=$this->get('opinionsStarRating2') ?></div>
-        </div>
-
-        <div class="pull-left">
-            <div class="pull-left" style="width: 35px; line-height: 1;">
-                <div style="height: 9px; margin: 5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
-            </div>
-            <div class="pull-left" style="width: 180px;">
-                <div class="progress" style="height: 9px; margin: 8px 0;">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <?=$this->get('opinionsStarRatingWidth1') ?>%"></div>
-                </div>
-            </div>
-            <div class="pull-right" style="margin-left: 10px;"><?=$this->get('opinionsStarRating1') ?></div>
-        </div>
+        <?php endfor; ?>
     </div>
 </div>
 
@@ -98,23 +52,13 @@
                     <li <?php if ($this->getRequest()->getParam('rating') == '' AND $this->getRequest()->getParam('add') == '') { echo 'class="active"'; } ?>>
                         <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index')); ?>"><?=$this->getTrans('naviAll') ?></a>
                     </li>
-                    <li <?php if ($this->getRequest()->getParam('rating') == 5) { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => 5)); ?>"><?=$this->getTrans('navi5stars') ?></a>
-                    </li>
-                    <li <?php if ($this->getRequest()->getParam('rating') == 4) { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => 4)); ?>"><?=$this->getTrans('navi4stars') ?></a>
-                    </li>
-                    <li <?php if ($this->getRequest()->getParam('rating') == 3) { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => 3)); ?>"><?=$this->getTrans('navi3stars') ?></a>
-                    </li>
-                    <li <?php if ($this->getRequest()->getParam('rating') == 2) { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => 2)); ?>"><?=$this->getTrans('navi2stars') ?></a>
-                    </li>
-                    <li <?php if ($this->getRequest()->getParam('rating') == 1) { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => 1)); ?>"><?=$this->getTrans('navi1stars') ?></a>
-                    </li>
+                    <?php for ($i = 5; $i >= 1; $i--): ?>
+                        <li <?php if ($this->getRequest()->getParam('rating') == $i) { echo 'class="active"'; } ?>>
+                            <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => $i)); ?>"><?=$this->getTrans('navi'.$i.'stars') ?></a>
+                        </li>
+                    <?php endfor; ?>
                 </ul>
-                <?php if($this->getUser()): ?>
+                <?php if ($this->getUser()): ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="navbar-right <?php if ($this->getRequest()->getParam('add') == 1) { echo 'active'; } ?>">
                             <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'add' => 1)); ?>"><?=$this->getTrans('naviAddOpinions') ?></a>
@@ -134,9 +78,11 @@
             <div class='row'>
                 <div class='col-sm-12'>
                     <?php foreach ($this->get('opinions') as $opinion): ?>
-                        <?php $userMapper = new \Modules\User\Mappers\User(); ?>
-                        <?php $user = $userMapper->getUserById($opinion->getUserId()); ?>
-                        <?php $date = new \Ilch\Date($opinion->getDate()); ?>
+                        <?php
+                        $userMapper = new \Modules\User\Mappers\User();
+                        $user = $userMapper->getUserById($opinion->getUserId());
+                        $date = new \Ilch\Date($opinion->getDate());
+                        ?>
                         <div class="item opinions">
                             <blockquote>
                                 <div class="row">
