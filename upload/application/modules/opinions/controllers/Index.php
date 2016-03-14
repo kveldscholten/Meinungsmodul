@@ -40,17 +40,12 @@ class Index extends \Ilch\Controller\Frontend
         }
 
         $this->getView()->set('opinionsRating', round($opinionsMapper->getSumRating() / count($opinionsMapper->getOpinions()), 2));
-        $this->getView()->set('opinionsStarRating1', $opinionsMapper->getStarRating(1));
-        $this->getView()->set('opinionsStarRating2', $opinionsMapper->getStarRating(2));
-        $this->getView()->set('opinionsStarRating3', $opinionsMapper->getStarRating(3));
-        $this->getView()->set('opinionsStarRating4', $opinionsMapper->getStarRating(4));
-        $this->getView()->set('opinionsStarRating5', $opinionsMapper->getStarRating(5));
-        $this->getView()->set('opinionsStarRatingWidth1', $opinionsMapper->getPercent($opinionsMapper->getStarRating(1), count($opinionsMapper->getOpinions())));
-        $this->getView()->set('opinionsStarRatingWidth2', $opinionsMapper->getPercent($opinionsMapper->getStarRating(2), count($opinionsMapper->getOpinions())));
-        $this->getView()->set('opinionsStarRatingWidth3', $opinionsMapper->getPercent($opinionsMapper->getStarRating(3), count($opinionsMapper->getOpinions())));
-        $this->getView()->set('opinionsStarRatingWidth4', $opinionsMapper->getPercent($opinionsMapper->getStarRating(4), count($opinionsMapper->getOpinions())));
-        $this->getView()->set('opinionsStarRatingWidth5', $opinionsMapper->getPercent($opinionsMapper->getStarRating(5), count($opinionsMapper->getOpinions())));
         $this->getView()->set('opinionsCount', count($opinionsMapper->getOpinions()));
+
+        for ($i = 1; $i <= 5; $i++) {
+            $this->getView()->set('opinionsStarRating'.$i, $opinionsMapper->getStarRating($i));
+            $this->getView()->set('opinionsStarRatingWidth'.$i, $opinionsMapper->getPercent($opinionsMapper->getStarRating($i), count($opinionsMapper->getOpinions())));
+        }
 
         if ($this->getRequest()->getParam('rating') == 1) {
             $this->getView()->set('opinions', $opinionsMapper->getOpinionsByRating(1));

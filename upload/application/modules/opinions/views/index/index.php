@@ -13,7 +13,7 @@
                    value="<?=$this->get('opinionsRating') ?>"
                    data-readonly="true"
                    data-show-clear="false"
-                   data-show-caption="false">              
+                   data-show-caption="false">
         </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 opinions">
@@ -127,7 +127,7 @@
 </div>
 
 <div class="opinions-entries">
-    <?php if ($this->getRequest()->getParam('add') == 1): ?>    
+    <?php if ($this->getRequest()->getParam('add') == 1): ?>
         <?php include APPLICATION_PATH.'/modules/opinions/views/index/add.php'; ?>
     <?php else: ?>
         <?php if ($this->get('opinions') != ''): ?>
