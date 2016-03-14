@@ -31,6 +31,8 @@ class Config extends \Ilch\Config\Install
     public function install()
     {
         $this->db()->queryMulti($this->getInstallSql());
+
+        $databaseConfig = new \Ilch\Config\Database($this->db());
         $databaseConfig->set('opinions_box_count', '3');
         $databaseConfig->set('opinions_slider_interval', '5000');
     }
