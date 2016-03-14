@@ -1,0 +1,156 @@
+.opinions blockquote {
+    margin: 0 0 20px;
+    border-left: 0;
+}
+
+.opinions .opinions-img {
+    height: 100px;
+    width: 100px;
+}
+
+.opinions .navbar {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+.opinions-entries {
+    background-color: #fff;
+    border-top: 0px;
+    border: 1px solid transparent;
+    border-color: #ddd;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 15px;
+}
+
+
+
+/* rating stars */
+.opinions .rating-container {
+    font-size: 1.5em !important;
+}
+
+.rating-block .rating-container {
+    font-size: 2.5em !important;
+}
+
+.opinions .glyphicon-star {
+    color: #fde16d;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-text-stroke: 1px #777;
+    text-shadow: 1px 1px #999;
+}
+
+
+
+/* box */
+.box blockquote {
+    font-size: 14px;
+    padding: 0 15px 10px 15px;
+}
+
+
+
+/* sliderbox */
+/* Control buttons */
+#opinions-carousel .carousel-control {
+    background: none;
+    color: #222;
+    text-shadow: none;
+    margin-top: 47px;
+}
+/* Previous button */
+#opinions-carousel .carousel-control.left {
+    left: -25px;
+}
+/* Next button  */
+#opinions-carousel .carousel-control.right {
+    right: -25px !important;
+}
+/* Changes the position of the indicators */
+#opinions-carousel .carousel-indicators {
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+#opinions-carousel img {
+    height: 100px;
+    width: 100px;
+}
+/* End carousel */
+
+.item blockquote {
+    border-left: none; 
+    margin: 0;
+}
+
+.item blockquote img {
+    margin-bottom: 10px;
+}
+
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    #opinions-carousel {
+        margin-bottom: 0;
+        padding: 0 40px 0 40px;
+    }
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) { 
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+    #opinions-carousel .carousel-indicators {
+        bottom: -20px !important;
+    }
+}
+
+
+
+/* Backend settings */
+.spinner {
+    width: 100px;
+}
+.spinner input {
+    text-align: right;
+}
+.input-group-btn-vertical {
+    position: relative;
+    white-space: nowrap;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    margin-left: -1px;
+    position: relative;
+    border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+    border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+    margin-top: -2px;
+    border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+    position: absolute;
+    top: 0;
+    left: 4px;
+}
