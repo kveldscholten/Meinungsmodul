@@ -19,7 +19,7 @@ Veldscholten, Kevin
 ## Installation
 alle Dateien im Ordner upload, in ihrer Ordnerstrucktur hochladen
 
-Nach Uploaden aller Datein muss das Modul im Backend in der Module Übersicht unter Nicht installierte Module installiert werden.
+Nach Uploaden aller Datein muss das Modul im Backend bei der Module Übersicht unter Nicht installierte Module installiert werden.
 
 Anschließend muss das Modul entsprechend im Menü verlinkt werden.
 
