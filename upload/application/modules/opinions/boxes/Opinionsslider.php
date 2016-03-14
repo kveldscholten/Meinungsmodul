@@ -15,6 +15,6 @@ class Opinionsslider extends \Ilch\Box
         $opinionsMapper = new OpinionsMapper();
 
         $this->getView()->set('opinions', $opinionsMapper->getOpinions());
-        $this->getView()->set('opinionsInterval', $opinionsMapper->getOpinions($this->getConfig()->get('opinions_slider_interval')));
+        $this->getView()->set('opinionsInterval', $this->getConfig()->get('opinions_slider_interval'));
     }
 }
