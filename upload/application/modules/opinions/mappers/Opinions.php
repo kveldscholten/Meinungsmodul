@@ -120,9 +120,8 @@ class Opinions extends \Ilch\Mapper
 
     public function getSumRating()
     {
-        $sql = 'SELECT SUM(rating)
+        $sql = 'SELECT SUM(`rating`)
                 FROM `[prefix]_opinions`';
-
         $entry = $this->db()->queryCell($sql);
 
         return $entry;
@@ -133,7 +132,6 @@ class Opinions extends \Ilch\Mapper
         $sql = 'SELECT COUNT(*)
                 FROM `[prefix]_opinions`
                 WHERE `rating` = '.$rating;
-
         $entry = $this->db()->queryCell($sql);
 
         return $entry;
@@ -141,7 +139,11 @@ class Opinions extends \Ilch\Mapper
 
     public function getPercent($count, $totalcount)
     {
-        $percent = round(($count / $totalcount) * 100);
+        if (!empty($count) AND !empty($totalcount)) {
+            $percent = round(($count / $totalcount) * 100);
+        } else {
+            return null;
+        }
 
         return $percent;
     }

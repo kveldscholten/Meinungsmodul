@@ -50,6 +50,7 @@ class Config extends \Ilch\Config\Install
                   `id` INT(11) NOT NULL AUTO_INCREMENT,
                   `user_id` INT(11) NOT NULL,
                   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  `rating` INT(11) NOT NULL,
                   `text` MEDIUMTEXT NOT NULL,
                   PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;';
