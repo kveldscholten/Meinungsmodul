@@ -49,7 +49,7 @@ class Config extends \Ilch\Config\Install
         return 'CREATE TABLE IF NOT EXISTS `[prefix]_opinions` (
                   `id` INT(11) NOT NULL AUTO_INCREMENT,
                   `user_id` INT(11) NOT NULL,
-                  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                   `rating` INT(11) NOT NULL,
                   `text` MEDIUMTEXT NOT NULL,
                   PRIMARY KEY (`id`)
