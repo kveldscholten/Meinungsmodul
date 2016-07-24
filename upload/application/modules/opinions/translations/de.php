@@ -4,8 +4,7 @@
  * @package ilch
  */
 
-return array
-(
+return [
     'menuOpinions' => 'Meinungen',
     'menuAddOpinion' => 'Meinung abgeben',
     'opinions' => 'Meinungen',
@@ -32,4 +31,4 @@ return array
     'navi2stars' => '2 Sterne',
     'navi1stars' => '1 Stern',
     'naviAddOpinions' => 'Meinung abgeben',
-);
+];

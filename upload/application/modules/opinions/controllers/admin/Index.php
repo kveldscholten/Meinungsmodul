@@ -7,32 +7,30 @@
 namespace Modules\Opinions\Controllers\Admin;
 
 use Modules\Opinions\Mappers\Opinions as OpinionsMapper;
-use Modules\Opinions\Models\Opinions as OpinionsModel;
 
 class Index extends \Ilch\Controller\Admin
 {
     public function init()
     {
+        $items = [
+            [
+                'name' => 'manage',
+                'active' => true,
+                'icon' => 'fa fa-th-list',
+                'url' => $this->getLayout()->getUrl(['controller' => 'index', 'action' => 'index'])
+            ],
+            [
+                'name' => 'settings',
+                'active' => false,
+                'icon' => 'fa fa-cogs',
+                'url' => $this->getLayout()->getUrl(['controller' => 'settings', 'action' => 'index'])
+            ]
+        ];
+
         $this->getLayout()->addMenu
         (
             'menuOpinions',
-            array
-            (
-                array
-                (
-                    'name' => 'manage',
-                    'active' => true,
-                    'icon' => 'fa fa-th-list',
-                    'url' => $this->getLayout()->getUrl(array('controller' => 'index', 'action' => 'index'))
-                ),
-                array
-                (
-                    'name' => 'settings',
-                    'active' => false,
-                    'icon' => 'fa fa-cogs',
-                    'url' => $this->getLayout()->getUrl(array('controller' => 'settings', 'action' => 'index'))
-                ),
-            )
+            $items
         );
     }
 
@@ -41,11 +39,11 @@ class Index extends \Ilch\Controller\Admin
         $opinionsMapper = new OpinionsMapper();
 
         $this->getLayout()->getAdminHmenu()
-                ->add($this->getTranslator()->trans('menuOpinions'), array('action' => 'index'));
+                ->add($this->getTranslator()->trans('menuOpinions'), ['action' => 'index']);
 
         if ($this->getRequest()->getPost('check_entries')) {
             if ($this->getRequest()->getPost('action') == 'delete') {
-                foreach($this->getRequest()->getPost('check_entries') as $opinionsId) {
+                foreach ($this->getRequest()->getPost('check_entries') as $opinionsId) {
                     $opinionsMapper->delete($opinionsId);
                 }
             }
@@ -64,6 +62,6 @@ class Index extends \Ilch\Controller\Admin
             $this->addMessage('deleteSuccess');
         }
 
-        $this->redirect(array('action' => 'index'));
+        $this->redirect(['action' => 'index']);
     }
 }

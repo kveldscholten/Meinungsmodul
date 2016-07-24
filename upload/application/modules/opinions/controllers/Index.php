@@ -17,7 +17,7 @@ class Index extends \Ilch\Controller\Frontend
         $opinionsModel = new OpinionsModel();
 
         $this->getLayout()->getHmenu()
-                ->add($this->getTranslator()->trans('menuOpinions'), array('action' => 'index'));
+                ->add($this->getTranslator()->trans('menuOpinions'), ['action' => 'index']);
 
         if ($this->getRequest()->getPost('saveOpinions')) {
             $rating = $this->getRequest()->getPost('rating');
@@ -35,11 +35,11 @@ class Index extends \Ilch\Controller\Frontend
 
                 $this->addMessage('saveSuccess');
 
-                $this->redirect(array('controller' => 'index', 'action' => 'index'));
+                $this->redirect(['controller' => 'index', 'action' => 'index']);
             }
         }
 
-        $progressBarColor = array('1' => 'danger', '2' => 'warning', '3' => 'info', '4' => 'primary', '5' => 'success');
+        $progressBarColor = ['1' => 'danger', '2' => 'warning', '3' => 'info', '4' => 'primary', '5' => 'success'];
         if (count($opinionsMapper->getOpinions()) != 0) {
             $roundRating = round($opinionsMapper->getSumRating() / count($opinionsMapper->getOpinions()), 2);
         } else {

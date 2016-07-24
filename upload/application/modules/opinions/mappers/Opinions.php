@@ -21,14 +21,14 @@ class Opinions extends \Ilch\Mapper
         if ($limit != null) {
             $entryArray = $this->db()->select('*')
                 ->from('opinions')
-                ->order(array('id' => 'DESC'))
+                ->order(['id' => 'DESC'])
                 ->limit($limit)
                 ->execute()
                 ->fetchRows();
         } else {
             $entryArray = $this->db()->select('*')
                 ->from('opinions')
-                ->order(array('id' => 'DESC'))
+                ->order(['id' => 'DESC'])
                 ->execute()
                 ->fetchRows();
         }
@@ -37,8 +37,7 @@ class Opinions extends \Ilch\Mapper
             return null;
         }
 
-        $entry = array();
-
+        $entry = [];
         foreach ($entryArray as $entries) {
             $entryModel = new OpinionsModel();
             $entryModel->setId($entries['id']);
@@ -69,8 +68,7 @@ class Opinions extends \Ilch\Mapper
             return null;
         }
 
-        $entry = array();
-
+        $entry = [];
         foreach ($entryArray as $entries) {
             $entryModel = new OpinionsModel();
             $entryModel->setId($entries['id']);
@@ -94,8 +92,8 @@ class Opinions extends \Ilch\Mapper
     {
         $entryArray = $this->db()->select('*')
             ->from('opinions')
-            ->where(array('rating' => $rating))
-            ->order(array('id' => 'DESC'))
+            ->where(['rating' => $rating])
+            ->order(['id' => 'DESC'])
             ->execute()
             ->fetchRows();
 
@@ -103,8 +101,7 @@ class Opinions extends \Ilch\Mapper
             return null;
         }
 
-        $entry = array();
-
+        $entry = [];
         foreach ($entryArray as $entries) {
             $entryModel = new OpinionsModel();
             $entryModel->setId($entries['id']);
@@ -165,7 +162,7 @@ class Opinions extends \Ilch\Mapper
         if ($opinions->getId()) {
             $this->db()->update('opinions')
                 ->values($fields)
-                ->where(array('id' => $opinions->getId()))
+                ->where(['id' => $opinions->getId()])
                 ->execute();
         } else {
             $this->db()->insert('opinions')
@@ -182,7 +179,7 @@ class Opinions extends \Ilch\Mapper
     public function delete($id)
     {
         $this->db()->delete('opinions')
-            ->where(array('id' => $id))
+            ->where(['id' => $id])
             ->execute();
     }
 }

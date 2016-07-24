@@ -8,25 +8,21 @@ namespace Modules\Opinions\Config;
 
 class Config extends \Ilch\Config\Install
 {
-    public $config = array
-    (
+    public $config = [
         'key' => 'opinions',
         'author' => 'Veldscholten, Kevin',
-        'icon_small' => 'opinions.png',
-        'languages' => array
-        (
-            'de_DE' => array
-            (
+        'icon_small' => 'fa-quote-left',
+        'languages' => [
+            'de_DE' => [
                 'name' => 'Meinungen',
                 'description' => 'Hier können die Meinungen der Seite verwaltet werden.',
-            ),
-            'en_EN' => array
-            (
+            ],
+            'en_EN' => [
                 'name' => 'Opinions',
                 'description' => 'Here you can manage opinions from your Site.',
-            ),
-        )
-    );
+            ],
+        ]
+    ];
 
     public function install()
     {

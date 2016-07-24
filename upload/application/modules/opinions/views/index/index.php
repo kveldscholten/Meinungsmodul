@@ -50,18 +50,18 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li <?php if ($this->getRequest()->getParam('rating') == '' AND $this->getRequest()->getParam('add') == '') { echo 'class="active"'; } ?>>
-                        <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index')); ?>"><?=$this->getTrans('naviAll') ?></a>
+                        <a href="<?=$this->getUrl(['controller' => 'index', 'action' => 'index']); ?>"><?=$this->getTrans('naviAll') ?></a>
                     </li>
                     <?php for ($i = 5; $i >= 1; $i--): ?>
                         <li <?php if ($this->getRequest()->getParam('rating') == $i) { echo 'class="active"'; } ?>>
-                            <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'rating' => $i)); ?>"><?=$this->getTrans('navi'.$i.'stars') ?></a>
+                            <a href="<?=$this->getUrl(['controller' => 'index', 'action' => 'index', 'rating' => $i]); ?>"><?=$this->getTrans('navi'.$i.'stars') ?></a>
                         </li>
                     <?php endfor; ?>
                 </ul>
                 <?php if ($this->getUser()): ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="navbar-right <?php if ($this->getRequest()->getParam('add') == 1) { echo 'active'; } ?>">
-                            <a href="<?=$this->getUrl(array('controller' => 'index', 'action' => 'index', 'add' => 1)); ?>"><?=$this->getTrans('naviAddOpinions') ?></a>
+                            <a href="<?=$this->getUrl(['controller' => 'index', 'action' => 'index', 'add' => 1]); ?>"><?=$this->getTrans('naviAddOpinions') ?></a>
                         </li>
                     </ul>
                 <?php endif; ?>

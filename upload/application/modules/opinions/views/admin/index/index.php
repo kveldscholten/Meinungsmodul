@@ -28,7 +28,7 @@
                         ?>
                         <tr>
                             <td><input value="<?=$opinion->getId() ?>" type="checkbox" name="check_entries[]" /></td>
-                            <td><?=$this->getDeleteIcon(array('action' => 'del', 'id' => $opinion->getId())) ?></td>
+                            <td><?=$this->getDeleteIcon(['action' => 'del', 'id' => $opinion->getId()]) ?></td>
                             <td><?=$user->getName() ?></td>
                             <td><?=$opinion->getRating() ?></td>
                             <td><?=$opinion->getText() ?></td>
@@ -37,7 +37,7 @@
                 </tbody>
             </table>
         </div>
-        <?=$this->getListBar(array('delete' => 'delete')) ?>
+        <?=$this->getListBar(['delete' => 'delete']) ?>
     </form>
 <?php else: ?>
     <?=$this->getTrans('noOpinions') ?>

@@ -68,5 +68,5 @@ $(function() {
             btn.prev("disabled", true);
         }
     });
-})
+});
 </script>
