@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?=$this->getStaticUrl('../application/modules/opinions/static/css/opinions.css') ?>">
-<link rel="stylesheet" href="<?=$this->getStaticUrl('../application/modules/opinions/static/js/star-rating/css/star-rating.css') ?>">
+<link rel="stylesheet" href="<?=$this->getBoxUrl('static/css/opinions.css') ?>">
+<link rel="stylesheet" href="<?=$this->getBoxUrl('static/js/star-rating/css/star-rating.css') ?>">
 
 <legend><?=$this->getTrans('menuOpinions') ?></legend>
 <div class='row'>
@@ -9,7 +9,7 @@
                 <div class="carousel-inner">
                     <?php foreach ($this->get('opinions') as $key => $opinion): ?>
                         <?php
-                        $userMapper = new \Modules\User\Mappers\User();
+                        $userMapper = $this->get('userMapper');
                         $user = $userMapper->getUserById($opinion->getUserId());
                         $date = new \Ilch\Date($opinion->getDate());
                         ?>
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<script src="<?=$this->getStaticUrl('../application/modules/opinions/static/js/star-rating/js/star-rating.js') ?>" type="text/javascript"></script>
+<script src="<?=$this->getBoxUrl('static/js/star-rating/js/star-rating.js') ?>" type="text/javascript"></script>
 <script>
 $(document).ready(function() {
     $('#opinions-carousel').carousel({

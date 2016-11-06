@@ -10,8 +10,6 @@ return [
     'opinions' => 'Opinions',
     'username' => 'Username',
     'comment' => 'Kommentar',
-    'missingText' => 'Comment was not filled',
-    'missingRating' => 'Rating must be selected',
     'sendSuccess' => 'Opinion successfull entry',
     'noOpinions' => 'No Opinions available',
     'noLogin' => 'Please Login',

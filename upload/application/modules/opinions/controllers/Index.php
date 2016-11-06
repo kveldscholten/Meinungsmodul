@@ -8,35 +8,45 @@ namespace Modules\Opinions\Controllers;
 
 use Modules\Opinions\Mappers\Opinions as OpinionsMapper;
 use Modules\Opinions\Models\Opinions as OpinionsModel;
+use Modules\User\Mappers\User as UserMapper;
+use Ilch\Validation;
 
 class Index extends \Ilch\Controller\Frontend
 {
     public function indexAction()
     {
         $opinionsMapper = new OpinionsMapper();
-        $opinionsModel = new OpinionsModel();
+        $userMapper = new UserMapper();
 
         $this->getLayout()->getHmenu()
                 ->add($this->getTranslator()->trans('menuOpinions'), ['action' => 'index']);
 
         if ($this->getRequest()->getPost('saveOpinions')) {
-            $rating = $this->getRequest()->getPost('rating');
-            $text = trim($this->getRequest()->getPost('text'));
+            Validation::setCustomFieldAliases([
+                'text' => 'comment',
+            ]);
 
-            if (empty($rating)) {
-                $this->addMessage('missingRating', 'danger');
-            } elseif (empty($text)) {
-                $this->addMessage('missingComment', 'danger');
-            } else {
-                $opinionsModel->setUserId($this->getUser()->getId());
-                $opinionsModel->setRating($rating);
-                $opinionsModel->setText($text);
-                $opinionsMapper->save($opinionsModel);
+            $validation = Validation::create($this->getRequest()->getPost(), [
+                'rating' => 'numeric|integer|min:1',
+                'text' => 'required'
+            ]);
 
-                $this->addMessage('saveSuccess');
+            if ($validation->isValid()) {
+                $model = new OpinionsModel();
+                $model->setUserId($this->getUser()->getId())
+                    ->setRating($this->getRequest()->getPost('rating'))
+                    ->setText($this->getRequest()->getPost('text'));
+                $opinionsMapper->save($model);
 
-                $this->redirect(['controller' => 'index', 'action' => 'index']);
+                $this->redirect()
+                    ->withMessage('saveSuccess')
+                    ->to(['action' => 'index']);
             }
+
+            $this->redirect()
+                ->withInput()
+                ->withErrors($validation->getErrorBag())
+                ->to(['action' => 'index', 'add' => 1]);
         }
 
         $progressBarColor = ['1' => 'danger', '2' => 'warning', '3' => 'info', '4' => 'primary', '5' => 'success'];
@@ -55,6 +65,7 @@ class Index extends \Ilch\Controller\Frontend
             $this->getView()->set('opinionsStarRatingWidth'.$i, $opinionsMapper->getPercent($opinionsMapper->getStarRating($i), count($opinionsMapper->getOpinions())));
         }
 
+        $this->getView()->set('userMapper', $userMapper);
         if ($this->getRequest()->getParam('rating') == 1) {
             $this->getView()->set('opinions', $opinionsMapper->getOpinionsByRating(1));
         } elseif ($this->getRequest()->getParam('rating') == 2) {

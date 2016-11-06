@@ -7,6 +7,7 @@
 namespace Modules\Opinions\Controllers\Admin;
 
 use Modules\Opinions\Mappers\Opinions as OpinionsMapper;
+use Modules\User\Mappers\User as UserMapper;
 
 class Index extends \Ilch\Controller\Admin
 {
@@ -37,6 +38,7 @@ class Index extends \Ilch\Controller\Admin
     public function indexAction()
     {
         $opinionsMapper = new OpinionsMapper();
+        $userMapper = new UserMapper();
 
         $this->getLayout()->getAdminHmenu()
                 ->add($this->getTranslator()->trans('menuOpinions'), ['action' => 'index']);
@@ -49,6 +51,7 @@ class Index extends \Ilch\Controller\Admin
             }
         }
 
+        $this->getView()->set('userMapper', $userMapper);
         $this->getView()->set('opinions', $opinionsMapper->getOpinions());
     }
 

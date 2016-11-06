@@ -10,8 +10,6 @@ return [
     'opinions' => 'Meinungen',
     'username' => 'Benutzername',
     'comment' => 'Kommentar',
-    'missingComment' => 'Kommentar muss ausgefüllt werden',
-    'missingRating' => 'Bewertung muss ausgewählt werden',
     'sendSuccess' => 'Meinung erfolgreich eingetragen',
     'noOpinions' => 'Keine Meinungen vorhanden',
     'noLogin' => 'Bitte einloggen',

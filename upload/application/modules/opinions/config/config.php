@@ -10,6 +10,7 @@ class Config extends \Ilch\Config\Install
 {
     public $config = [
         'key' => 'opinions',
+        'version' => '1.0',
         'author' => 'Veldscholten, Kevin',
         'icon_small' => 'fa-quote-left',
         'languages' => [
@@ -21,7 +22,9 @@ class Config extends \Ilch\Config\Install
                 'name' => 'Opinions',
                 'description' => 'Here you can manage opinions from your Site.',
             ],
-        ]
+        ],
+        'ilchCore' => '2.0.0',
+        'phpVersion' => '5.6'
     ];
 
     public function install()

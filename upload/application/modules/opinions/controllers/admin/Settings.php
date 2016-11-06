@@ -6,6 +6,8 @@
 
 namespace Modules\Opinions\Controllers\Admin;
 
+use Ilch\Validation;
+
 class Settings extends \Ilch\Controller\Admin
 {
     public function init()
@@ -39,10 +41,24 @@ class Settings extends \Ilch\Controller\Admin
                 ->add($this->getTranslator()->trans('settings'), ['action' => 'index']);
 
         if ($this->getRequest()->isPost()) {
-            $this->getConfig()->set('opinions_box_count', $this->getRequest()->getPost('opinions_box_count'));
-            $this->getConfig()->set('opinions_slider_interval', $this->getRequest()->getPost('opinions_slider_interval'));
+            $validation = Validation::create($this->getRequest()->getPost(), [
+                'opinions_box_count' => 'numeric|integer|min:2',
+                'opinions_slider_interval' => 'numeric|integer|min:1000'
+            ]);
 
-            $this->addMessage('saveSuccess');
+            if ($validation->isValid()) {
+                $this->getConfig()->set('opinions_box_count', $this->getRequest()->getPost('opinions_box_count'));
+                $this->getConfig()->set('opinions_slider_interval', $this->getRequest()->getPost('opinions_slider_interval'));
+
+                $this->redirect()
+                    ->withMessage('saveSuccess')
+                    ->to(['action' => 'index']);
+            }
+
+            $this->redirect()
+                ->withInput()
+                ->withErrors($validation->getErrorBag())
+                ->to(['action' => 'index']);
         }
 
         $this->getView()->set('opinions_box_count', $this->getConfig()->get('opinions_box_count'));

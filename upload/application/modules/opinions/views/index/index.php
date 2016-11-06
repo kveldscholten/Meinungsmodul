@@ -79,7 +79,7 @@
                 <div class='col-sm-12'>
                     <?php foreach ($this->get('opinions') as $opinion): ?>
                         <?php
-                        $userMapper = new \Modules\User\Mappers\User();
+                        $userMapper = $this->get('userMapper');
                         $user = $userMapper->getUserById($opinion->getUserId());
                         $date = new \Ilch\Date($opinion->getDate());
                         ?>
