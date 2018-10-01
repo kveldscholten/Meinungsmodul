@@ -10,7 +10,7 @@ class Config extends \Ilch\Config\Install
 {
     public $config = [
         'key' => 'opinions',
-        'version' => '1.0',
+        'version' => '1.1',
         'author' => 'Veldscholten, Kevin',
         'icon_small' => 'fa-quote-left',
         'languages' => [
@@ -23,7 +23,7 @@ class Config extends \Ilch\Config\Install
                 'description' => 'Here you can manage opinions from your Site.',
             ],
         ],
-        'ilchCore' => '2.0.0',
+        'ilchCore' => '2.1.15',
         'phpVersion' => '5.6'
     ];
 
@@ -52,11 +52,16 @@ class Config extends \Ilch\Config\Install
                   `rating` INT(11) NOT NULL,
                   `text` MEDIUMTEXT NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;';
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;';
     }
 
-    public function getUpdate()
+    public function getUpdate($installedVersion)
     {
-
+        switch ($installedVersion) {
+            case "1.0":
+            case "1.1":
+                // Convert tables to new character set and collate
+                $this->db()->query('ALTER TABLE `[prefix]_opinions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
+        }
     }
 }
